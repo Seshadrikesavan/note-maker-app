@@ -1,0 +1,37 @@
+
+<!--<div class = "col-3 card-data">-->
+    <div class="add-note-button">
+        <button mat-raised-button color = "primary" routerLink="/add-note">
+            <mat-icon [inline]="true">create</mat-icon>
+            Add Note
+        </button>
+    </div>
+    <br>
+    <div class="card-wrapper">
+        <mat-card *ngFor="let note of notes; let i = index" id="{{i+1}}">
+            <mat-card-header>
+                <mat-card-title>{{note.NoteTitle}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>{{note.NoteContent}}</mat-card-content>
+            <mat-card-footer>Modified 1m ago</mat-card-footer>
+            <mat-card-actions>
+                <button mat-icon-button color="primary" (click)="changeIcon(i)">
+                    <mat-icon>{{iconNames[i]}}</mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click) = "SendCurrentNote(note, i+1)">
+                        Edit
+                    </button>
+                    <button mat-menu-item>
+                        Delete
+                    </button>
+                </mat-menu>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    
+    
+    

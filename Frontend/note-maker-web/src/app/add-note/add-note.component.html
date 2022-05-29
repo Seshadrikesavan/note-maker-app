@@ -1,0 +1,21 @@
+<div class="form-div">  
+    <form #noteForm="ngForm" [formGroup] = "addNoteGroup" (ngSubmit) = "onSubmit()">
+        <label class="label-text"> Title </label> 
+        <br>
+        <mat-form-field appearance = "outline">   
+        <input matInput formControlName="title" name="title">  
+        </mat-form-field>  
+        <br> 
+        <br> 
+        <label class="label-text"> Content </label> 
+        <br>
+        <mat-form-field appearance = "outline">  
+        <textarea matInput formControlName="content" name="content"> </textarea> 
+        </mat-form-field>  
+        <br>
+        <br>
+        <button [disabled]="addNoteGroup.invalid || noteForm.pristine" mat-raised-button color="primary" id="save" type="submit">
+            Save
+        </button>
+    </form>
+</div>  
