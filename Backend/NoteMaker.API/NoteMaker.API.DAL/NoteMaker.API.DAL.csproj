@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NoteMaker.API.Model\NoteMaker.API.Model.csproj" />
+    <ProjectReference Include="..\NoteMaker.API.Utility\NoteMaker.API.Utility.csproj" />
   </ItemGroup>
 
 </Project>
