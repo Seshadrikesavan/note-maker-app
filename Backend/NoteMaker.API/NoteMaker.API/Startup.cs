@@ -31,6 +31,7 @@ namespace NoteMaker.API
             services.AddRazorPages();
             //services.AddDbContext<NoteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnectionString")));
             services.AddTransient<INoteService, NoteService>();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +57,12 @@ namespace NoteMaker.API
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "NoteMaker API V1");
             });
         }
     }

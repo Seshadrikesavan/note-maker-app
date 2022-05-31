@@ -47,6 +47,7 @@ namespace NoteMaker.API.DAL
                 {
                     noteToBeUpdated.NoteTitle = updatedNote.NoteTitle;
                     noteToBeUpdated.NoteContent = updatedNote.NoteContent;
+                    noteToBeUpdated.Starred = updatedNote.Starred;
                     noteToBeUpdated.ModifiedTime = DateTime.Now;
                     context.SaveChanges();
                 }
