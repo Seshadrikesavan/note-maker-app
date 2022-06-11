@@ -27,6 +27,14 @@ namespace NoteMaker.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var corsUrls = Configuration.GetSection("CorsPolicy:URLs").Get<string[]>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi",
+                                   builder => builder.WithOrigins(corsUrls)
+                                                     .AllowAnyHeader()
+                                                     .AllowAnyMethod());
+            });
             services.AddControllers();
             services.AddRazorPages();
             //services.AddDbContext<NoteContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnectionString")));
@@ -38,6 +46,7 @@ namespace NoteMaker.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddLog4Net();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -50,6 +59,8 @@ namespace NoteMaker.API
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors("CorsApi");
 
             app.UseAuthorization();
 

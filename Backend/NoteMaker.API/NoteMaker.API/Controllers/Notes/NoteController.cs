@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using NoteMaker.API.Model;
 using NoteMaker.API.Service.Interfaces;
+using Microsoft.AspNetCore.Cors;
 
 namespace NoteMaker.API.Controllers.Notes
 {
+    [EnableCors("CorsApi")]
     [Route("api/notemaker")]
     public class NoteController : ControllerBase
     {
