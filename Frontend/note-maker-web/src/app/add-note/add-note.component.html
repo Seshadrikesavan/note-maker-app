@@ -3,14 +3,14 @@
         <label class="label-text"> Title </label> 
         <br>
         <mat-form-field appearance = "outline">   
-        <input matInput formControlName="title" name="title">  
+        <input matInput formControlName="title" name="title" id="noteTitle" [(ngModel)]="noteTitle">  
         </mat-form-field>  
         <br> 
         <br> 
         <label class="label-text"> Content </label> 
         <br>
         <mat-form-field appearance = "outline">  
-        <textarea matInput formControlName="content" name="content"> </textarea> 
+        <textarea matInput formControlName="content" name="content" id="noteContent" [(ngModel)]="noteContent"> </textarea> 
         </mat-form-field>  
         <br>
         <br>

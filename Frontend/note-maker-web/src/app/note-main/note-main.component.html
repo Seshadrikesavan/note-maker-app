@@ -8,12 +8,13 @@
     </div>
     <br>
     <div class="card-wrapper">
+        <mat-spinner *ngIf="notes.length === 0"></mat-spinner>
         <mat-card *ngFor="let note of notes; let i = index" id="{{i+1}}">
             <mat-card-header>
-                <mat-card-title>{{note.NoteTitle}}</mat-card-title>
+                <mat-card-title>{{note.noteTitle}}</mat-card-title>
             </mat-card-header>
-            <mat-card-content>{{note.NoteContent}}</mat-card-content>
-            <mat-card-footer>Modified 1m ago</mat-card-footer>
+            <mat-card-content>{{note.noteContent}}</mat-card-content>
+            <mat-card-footer>Modified {{note.modifiedTime | modified}} ago</mat-card-footer>
             <mat-card-actions>
                 <button mat-icon-button color="primary" (click)="changeIcon(i)">
                     <mat-icon>{{iconNames[i]}}</mat-icon>
@@ -22,10 +23,10 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click) = "SendCurrentNote(note, i+1)">
+                    <button mat-menu-item (click) = "SendCurrentNote(note, note.id)">
                         Edit
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click) = "DeleteNote(note.id)">
                         Delete
                     </button>
                 </mat-menu>

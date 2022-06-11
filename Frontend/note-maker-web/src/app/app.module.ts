@@ -10,18 +10,22 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { ToastrModule } from 'ngx-toastr';
 import { EditNoteComponent } from './edit-note/edit-note.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ModifiedPipe } from './modified.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteMainComponent,
     AddNoteComponent,
-    EditNoteComponent
+    EditNoteComponent,
+    ModifiedPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,9 @@ import { EditNoteComponent } from './edit-note/edit-note.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    ToastrModule.forRoot()
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   exports: [
